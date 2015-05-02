@@ -154,10 +154,7 @@ GROUP BY Models.brand_name
 -- 2015    Chevrolet    Malibu
 -- 2015    Subaru       Outback
 INSERT INTO Models (year, brand_name, name)
-    VALUES (2015, 'Chevrolet', 'Malibu');
-
-INSERT INTO Models (year, brand_name, name)
-    VALUES (2015, 'Subaru', 'Outback');
+    VALUES (2015, 'Chevrolet', 'Malibu'), (2015, 'Subaru', 'Outback');
 
 -- 3. Write a SQL statement to crate a table called ``Awards`` 
 --    with columns ``name``, ``year``, and ``winner``. Choose 
@@ -176,10 +173,8 @@ CREATE TABLE Awards(
 --   IIHS Safety Award    2015      # get the ``id`` of the 2015 Chevrolet Malibu
 --   IIHS Safety Award    2015      # get the ``id`` of the 2015 Subaru Outback
 INSERT INTO Awards (name, year, winner)
-    VALUES ('IIHS Safety Award', 2015, (SELECT id FROM Models WHERE year = 2015 AND brand_name = 'Chevrolet' AND name = 'Malibu'));
-
-INSERT INTO Awards (name, year, winner)
-    VALUES ('IIHS Safety Award', 2015, (SELECT id FROM Models WHERE year = 2015 AND brand_name = 'Subaru' AND name = 'Outback'));
+    VALUES ('IIHS Safety Award', 2015, (SELECT id FROM Models WHERE year = 2015 AND brand_name = 'Chevrolet' AND name = 'Malibu')),
+      ('IIHS Safety Award', 2015, (SELECT id FROM Models WHERE year = 2015 AND brand_name = 'Subaru' AND name = 'Outback'));
 
 -- 5. Using a subquery, select only the *name* of any model whose 
 -- year is the same year that *any* brand was founded.
